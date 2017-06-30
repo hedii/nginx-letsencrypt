@@ -34,6 +34,8 @@ ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA
 ### /etc/nginx/site-available/example.com
 ```
 server {
+    listen 80;
+    listen 443;
     server_name www.example.com;
     return 301 $scheme://example.com$request_uri;
 }
