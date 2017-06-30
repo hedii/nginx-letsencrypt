@@ -1,5 +1,12 @@
 # nginx-letsencrypt
 
+### Generate keys
+```
+sudo mkdir /etc/nginx/ssl
+sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 4096
+sudo openssl rand -out /etc/nginx/ssl/ticket.key 48
+```
+
 ### /etc/nginx/site-available/example.com
 ```
 server {
