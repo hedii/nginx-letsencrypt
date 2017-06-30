@@ -81,7 +81,7 @@ server {
         log_not_found off;
         expires max;
         gzip_vary on;
-      }
+    }
 
     location ~ /\.ht {
         deny all;
