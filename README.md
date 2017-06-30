@@ -7,6 +7,46 @@ sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 4096
 sudo openssl rand -out /etc/nginx/ssl/ticket.key 48
 ```
 
+### /etc/nginx/nginx.conf
+```
+user www-data;
+worker_processes auto;
+
+error_log /var/log/nginx/error.log warn;
+pid /var/run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    # ...
+    
+    gzip on;
+    gzip_comp_level 5;
+    gzip_vary on;
+    gzip_types
+      application/atom+xml
+      application/javascript
+      application/json
+      application/rss+xml
+      application/vnd.ms-fontobject
+      application/x-font-ttf
+      application/x-web-app-manifest+json
+      application/xhtml+xml
+      application/xml
+      font/opentype
+      image/svg+xml
+      image/x-icon
+      text/css
+      text/plain
+      text/x-component;
+    
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+}
+```
+
 ### /etc/nginx/snippets/letsencrypt.conf
 ```
 location ~ /.well-known {
