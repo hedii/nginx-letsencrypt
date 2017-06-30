@@ -9,7 +9,7 @@ sudo openssl rand -out /etc/nginx/ssl/ticket.key 48
 
 ### /etc/nginx/snippets/letsencrypt.conf
 ```
-location /.well-known {
+location ~ /.well-known {
     allow all;
 }
 ```
@@ -41,6 +41,7 @@ server {
 server {
     listen 80;
     server_name example.com;
+    root /home/debian/www/$host;
     include /etc/nginx/snippets/letsencrypt.conf;
 
     location / {
