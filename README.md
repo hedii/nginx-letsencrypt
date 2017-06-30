@@ -131,3 +131,21 @@ server {
     }
 }
 ```
+
+### certbot
+```
+sudo certbot certonly --webroot -w /home/debian/www/example.com -d example.com -d www.example.com
+
+sudo certbot renew --dry-run
+```
+
+### /home/debian/reload_nginx.sh
+```
+#!/bin/bash
+service nginx restart
+```
+
+### crontab
+```
+59 3 5 * * certbot renew --noninteractive --renew-hook /home/debian/reload_nginx.sh
+```
