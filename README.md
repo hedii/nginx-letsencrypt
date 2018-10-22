@@ -142,7 +142,7 @@ sudo certbot renew --dry-run
 ### /home/debian/reload_nginx.sh
 ```
 #!/bin/bash
-service nginx restart
+sudo service nginx restart
 ```
 
 ### crontab
